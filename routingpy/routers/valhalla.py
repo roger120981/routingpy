@@ -283,7 +283,6 @@ class Valhalla:
         generalize: Optional[float] = None,
         preference: Optional[str] = None,
         options: Optional[dict] = None,
-        units: Optional[str] = None,
         language: Optional[str] = None,
         directions_type: Optional[str] = None,
         avoid_locations: Optional[List[List[float]]] = None,
