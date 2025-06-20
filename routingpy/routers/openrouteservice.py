@@ -106,7 +106,6 @@ class ORS:
         format: Optional[str] = "geojson",
         preference: Optional[str] = None,
         alternative_routes: Optional[dict] = None,
-        units: Optional[str] = None,
         language: Optional[str] = None,
         geometry: Optional[bool] = None,
         geometry_simplify: Optional[bool] = None,
@@ -150,9 +149,6 @@ class ORS:
             for the algorithm determining suitable alternatives. Must contain "share_factor", "target_count"
             and "weight_factor".
         :type alternative_routes: dict
-
-        :param units: Specifies the distance unit. One of ["m", "km", "mi"]. Default "m".
-        :type units: str
 
         :param language: Language for routing instructions. One of ["en", "de", "cn",
             "es", "ru", "dk", "fr", "it", "nl", "br", "se", "tr", "gr"].
@@ -254,9 +250,6 @@ class ORS:
                 )
             params["alternative_routes"] = alternative_routes
 
-        if units:
-            params["units"] = units
-
         if language:
             params["language"] = language
 
@@ -315,20 +308,13 @@ class ORS:
                 dry_run=dry_run,
             ),
             format,
-            units,
             alternative_routes,
         )
 
     @staticmethod
-    def parse_direction_json(response, format, units, alternative_routes):
+    def parse_direction_json(response, format, alternative_routes):
         if response is None:  # pragma: no cover
             return Direction()
-
-        units_factor = 1
-        if units == "mi":
-            units_factor = 0.621371 * 1000
-        elif units == "km":
-            units_factor = 1000
 
         if format == "geojson":
             if alternative_routes:
@@ -346,9 +332,7 @@ class ORS:
             else:
                 geometry = response["features"][0]["geometry"]["coordinates"]
                 duration = int(response["features"][0]["properties"]["summary"]["duration"])
-                distance = int(
-                    response["features"][0]["properties"]["summary"]["distance"] * units_factor
-                )
+                distance = int(response["features"][0]["properties"]["summary"]["distance"])
                 return Direction(geometry=geometry, duration=duration, distance=distance, raw=response)
         elif format == "json":
             if alternative_routes:
@@ -360,7 +344,7 @@ class ORS:
                     routes.append(
                         Direction(
                             geometry=geometry,
-                            distance=int(route["summary"]["distance"] * units_factor),
+                            distance=int(route["summary"]["distance"]),
                             duration=int(route["summary"]["duration"]),
                             raw=route,
                         )
@@ -369,7 +353,7 @@ class ORS:
             else:
                 geometry = utils.decode_polyline5(response["routes"][0]["geometry"])
                 duration = int(response["routes"][0]["summary"]["duration"])
-                distance = int(response["routes"][0]["summary"]["distance"] * units_factor)
+                distance = int(response["routes"][0]["summary"]["distance"])
 
                 return Direction(geometry=geometry, duration=duration, distance=distance, raw=response)
 
@@ -379,7 +363,6 @@ class ORS:
         profile: str,
         intervals: List[int],
         interval_type: Optional[str] = "time",
-        units: Optional[str] = None,
         location_type: Optional[str] = "start",
         smoothing: Optional[float] = None,
         attributes: Optional[List[str]] = None,
@@ -404,10 +387,6 @@ class ORS:
         :param intervals: Ranges to calculate distances/durations for. This can be
             a list of multiple ranges, e.g. [600, 1200, 1400]. In meters or seconds.
         :type intervals: list of int
-
-        :param units: Specifies the unit system to use when displaying results.
-            One of ["m", "km", "m"]. Default "m".
-        :type units: str
 
         :param location_type: 'start' treats the location(s) as starting point,
             'destination' as goal. Default 'start'.
@@ -440,9 +419,6 @@ class ORS:
 
         if interval_type:
             params["range_type"] = interval_type
-
-        if units:
-            params["units"] = units
 
         if location_type:
             params["location_type"] = location_type
@@ -492,7 +468,6 @@ class ORS:
         destinations: Optional[List[int]] = None,
         metrics: Optional[List[str]] = None,
         resolve_locations: Optional[bool] = None,
-        units: Optional[str] = None,
         dry_run: Optional[bool] = None,
     ):
         """Gets travel distance and time for a matrix of origins and destinations.
@@ -524,10 +499,6 @@ class ORS:
             Default False.
         :type resolve_locations: bool
 
-        :param units: Specifies the unit system to use when displaying results.
-            One of ["m", "km", "m"]. Default "m".
-        :type units: str
-
         :param dry_run: Print URL and parameters without sending the request.
         :param dry_run: bool
 
@@ -548,9 +519,6 @@ class ORS:
 
         if resolve_locations is not None:
             params["resolve_locations"] = resolve_locations
-
-        if units:
-            params["units"] = units
 
         return self.parse_matrix_json(
             self.client._request(

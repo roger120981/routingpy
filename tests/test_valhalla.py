@@ -61,8 +61,10 @@ class ValhallaTest(_test.TestCase):
         self.assertEqual(1, len(responses.calls))
         self.assertEqual(json.loads(responses.calls[0].request.body.decode("utf-8")), expected)
         self.assertIsInstance(routes, Direction)
-        self.assertIsInstance(routes.distance, int)
-        self.assertIsInstance(routes.duration, int)
+        # Request unit is "km". Server response is 100.32 + 50.12 = 150.44 kilometers.
+        self.assertEqual(routes.distance, int(150.44 * 1000))
+        # Server response is 25 + 35 = 57seconds.
+        self.assertEqual(routes.duration, 57)
         self.assertIsInstance(routes.geometry, list)
         self.assertIsInstance(routes.raw, dict)
 
@@ -168,8 +170,10 @@ class ValhallaTest(_test.TestCase):
         self.assertEqual(1, len(responses.calls))
         self.assertEqual(json.loads(responses.calls[0].request.body.decode("utf-8")), expected)
         self.assertIsInstance(matrix, Matrix)
-        self.assertIsInstance(matrix.durations, list)
-        self.assertIsInstance(matrix.distances, list)
+        # Server response is [[0, 100], [100, 0]] seconds.
+        self.assertEqual(matrix.durations, [[0, 100], [100, 0]])
+        # Request unit is "km". Server response is 83.62 and 38.10 kilometers.
+        self.assertEqual(matrix.distances, [[0, int(83.62 * 1000)], [int(38.10 * 1000), 0]])
         self.assertIsInstance(matrix.raw, dict)
 
     @responses.activate

@@ -115,7 +115,6 @@ class Valhalla:
         profile: str,
         preference: Optional[str] = None,
         options: Optional[dict] = None,
-        units: Optional[str] = None,
         instructions: Optional[bool] = False,
         language: Optional[str] = None,
         directions_type: Optional[str] = None,
@@ -148,8 +147,6 @@ class Valhalla:
             as well as for estimating time along the path. Only specify the actual options dict, the profile
             will be filled automatically. For more information, visit:
             https://github.com/valhalla/valhalla/blob/master/docs/api/turn-by-turn/api-reference.md#costing-options
-
-        :param units: Distance units for output. One of ['mi', 'km']. Default km.
 
         :param instructions: Whether to return turn-by-turn instructions. Named for compatibility with other
             providers. Valhalla's parameter here is 'narrative'.
@@ -189,7 +186,6 @@ class Valhalla:
             profile,
             preference,
             options,
-            units,
             instructions,
             language,
             directions_type,
@@ -201,8 +197,7 @@ class Valhalla:
         )
 
         return self.parse_direction_json(
-            self.client._request("/route", post_params=params, dry_run=dry_run),
-            units,
+            self.client._request("/route", post_params=params, dry_run=dry_run)
         )
 
     @staticmethod
@@ -211,7 +206,6 @@ class Valhalla:
         profile,
         preference=None,
         options=None,
-        units=None,
         instructions=False,
         language=None,
         directions_type=None,
@@ -238,10 +232,8 @@ class Valhalla:
             if preference == "shortest":
                 params["costing_options"][profile]["shortest"] = True
 
-        if any((units, language, directions_type)):
+        if any((language, directions_type)):
             params["directions_options"] = dict()
-            if units:
-                params["directions_options"]["units"] = units
             if language:
                 params["directions_options"]["language"] = language
             if directions_type:
@@ -265,7 +257,7 @@ class Valhalla:
         return params
 
     @staticmethod
-    def parse_direction_json(response, units):
+    def parse_direction_json(response):
         if response is None:  # pragma: no cover
             return Direction()
 
@@ -273,9 +265,9 @@ class Valhalla:
         for leg in response["trip"]["legs"]:
             geometry.extend(utils.decode_polyline6(leg["shape"]))
             duration += leg["summary"]["time"]
+            distance += leg["summary"]["length"]
 
-            factor = 0.621371 if units == "mi" else 1
-            distance += int(leg["summary"]["length"] * 1000 * factor)
+        distance *= 1000  # convert to meters
 
         return Direction(geometry=geometry, duration=int(duration), distance=int(distance), raw=response)
 
@@ -504,7 +496,6 @@ class Valhalla:
         options: Optional[dict] = None,
         avoid_locations: Optional[List[List[float]]] = None,
         avoid_polygons: Optional[List[List[List[float]]]] = None,
-        units: Optional[str] = None,
         date_time: Optional[dict] = None,
         id: Optional[str] = None,
         dry_run: Optional[bool] = None,
@@ -546,8 +537,6 @@ class Valhalla:
             efficient to use avoid_locations. Valhalla will close open rings (i.e. copy the first coordingate to the
             last position).
 
-        :param units: Distance units for output. One of ['mi', 'km']. Default km.
-
         :param date_time: This is the local date and time at the location. Field ``type``: 0: Current departure time,
             1: Specified departure time. Field ``value```: the date and time is specified
             in format YYYY-MM-DDThh:mm, local time.
@@ -569,15 +558,13 @@ class Valhalla:
             options,
             avoid_locations,
             avoid_polygons,
-            units,
             date_time,
             id,
             **kwargs
         )
 
         return self.parse_matrix_json(
-            self.client._request("/sources_to_targets", post_params=params, dry_run=dry_run),
-            units,
+            self.client._request("/sources_to_targets", post_params=params, dry_run=dry_run)
         )
 
     @staticmethod
@@ -590,7 +577,6 @@ class Valhalla:
         options=None,
         avoid_locations=None,
         avoid_polygons=None,
-        units=None,
         date_time=None,
         id=None,
         **kwargs
@@ -634,9 +620,6 @@ class Valhalla:
         if avoid_polygons:
             params["avoid_polygons"] = avoid_polygons
 
-        if units:
-            params["units"] = units
-
         if date_time:
             params["date_time"] = date_time
 
@@ -648,19 +631,16 @@ class Valhalla:
         return params
 
     @staticmethod
-    def parse_matrix_json(response, units):
+    def parse_matrix_json(response):
         if response is None:  # pragma: no cover
             return Matrix()
 
-        factor = 0.621371 if units == "mi" else 1
         durations = [
             [destination["time"] for destination in origin] for origin in response["sources_to_targets"]
         ]
         distances = [
             [
-                int(destination["distance"] * 1000 * factor)
-                if destination["distance"] is not None
-                else None
+                destination["distance"] * 1000 if destination["distance"] is not None else None
                 for destination in origin
             ]
             for origin in response["sources_to_targets"]

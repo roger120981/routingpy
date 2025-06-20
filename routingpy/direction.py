@@ -115,6 +115,14 @@ class Direction(object):
         return self._distance
 
     @property
+    def km(self) -> float:
+        return self.distance / 1000
+
+    @property
+    def mi(self) -> float:
+        return self.distance * 0.0006213712
+
+    @property
     def raw(self) -> Optional[dict]:
         """
         Returns the route's raw, unparsed response. For details, consult the routing engine's API documentation.

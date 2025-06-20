@@ -38,14 +38,15 @@ ENDPOINTS_RESPONSES = {
                 "legs": [
                     {
                         "shape": "}wpulAvkxblCtJpGu}@hrCkAvDsAdEm@xBkAvDeK`\\ssAthE{iAjpDyiAlpD",
-                        "summary": {"length": 100, "time": 100},
+                        "summary": {"length": 100.32, "time": 25},
                     },
                     {
                         "shape": "}wpulAvkxblCtJpGu}@hrCkAvDsAdEm@xBkAvDeK`\\ssAthE{iAjpD",
-                        "summary": {"length": 50, "time": 50},
+                        "summary": {"length": 50.12, "time": 32},
                     },
                 ]
-            }
+            },
+            "units": "kilometers",
         },
         "isochrones": {
             "type": "FeatureCollection",
@@ -83,8 +84,8 @@ ENDPOINTS_RESPONSES = {
         },
         "matrix": {
             "sources_to_targets": [
-                [{"distance": 0, "time": 0}, {"distance": 100, "time": 100}],
-                [{"distance": 100, "time": 100}, {"distance": 0, "time": 0}],
+                [{"distance": 0, "time": 0}, {"distance": 83.62, "time": 100}],
+                [{"distance": 38.10, "time": 100}, {"distance": 0, "time": 0}],
             ]
         },
         "expansion": {
@@ -588,7 +589,7 @@ ENDPOINTS_RESPONSES = {
             "json": {
                 "routes": [
                     {
-                        "summary": {"distance": 850.5, "duration": 191.4},
+                        "summary": {"distance": 2439, "duration": 100},
                         "geometry": "ihrlHir~s@cFFcAKeB_@_B]g@IUAQB]PaCr@y@cJeBXe@qJ_@kH??",
                     }
                 ]
@@ -671,7 +672,7 @@ ENDPOINTS_RESPONSES = {
         },
         "matrix": {
             "durations": [[7900.34], [0], [136841.92], [483295.5]],
-            "distances": [[125414.58], [0], [2383943.25], [10037064]],
+            "distances": [[125.58], [0], [238.25], [100]],
         },
     },
     "graphhopper": {
@@ -1059,7 +1060,6 @@ ENDPOINTS_QUERIES = {
             },
             "profile": "auto",
             "preference": "shortest",
-            "units": "mi",
             "directions_type": "none",
             "avoid_locations": PARAM_POINT,
             "avoid_polygons": PARAM_POLY,
@@ -1096,7 +1096,7 @@ ENDPOINTS_QUERIES = {
             },
             "avoid_locations": PARAM_POINT,
             "profile": "auto",
-            "units": "mi",
+            "units": "km",
             "id": "wacko",
             "preference": "shortest",
         },
@@ -1148,7 +1148,6 @@ ENDPOINTS_QUERIES = {
             "locations": PARAM_LINE,
             "profile": "driving-car",
             "preference": "fastest",
-            "units": "mi",
             "language": "en",
             "geometry": "true",
             "geometry_simplify": "False",
@@ -1167,7 +1166,6 @@ ENDPOINTS_QUERIES = {
             "profile": "cycling-regular",
             "interval_type": "distance",
             "intervals": [PARAM_INT_BIG],
-            "units": "m",
             "location_type": "destination",
             "attributes": ["area", "reachfactor"],
         },
@@ -1178,7 +1176,6 @@ ENDPOINTS_QUERIES = {
             "profile": "driving-car",
             "metrics": ["duration", "distance"],
             "resolve_locations": "true",
-            "units": "mi",
         },
     },
 }
@@ -1200,7 +1197,7 @@ ENDPOINTS_EXPECTED = {
                     "shortest": True,
                 }
             },
-            "directions_options": {"units": "mi", "language": "pirate", "directions_type": "none"},
+            "directions_options": {"language": "pirate", "directions_type": "none"},
             "avoid_locations": [{"lon": 8.34234, "lat": 48.23424}],
             "avoid_polygons": PARAM_POLY,
             "date_time": {"type": 1, "value": "2021-03-03T08:06"},
@@ -1249,7 +1246,7 @@ ENDPOINTS_EXPECTED = {
             },
             "avoid_locations": [{"lon": 8.34234, "lat": 48.23424}],
             "id": "wacko",
-            "units": "mi",
+            "units": "km",
         },
         "expansion": {
             "expansion_properties": ["distances", "durations", "costs"],

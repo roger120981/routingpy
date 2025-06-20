@@ -61,7 +61,7 @@ class ORSTest(_test.TestCase):
         self.assertIsInstance(routes, Direction)
         self.assertIsInstance(routes.geometry, list)
         self.assertIsInstance(routes.duration, int)
-        self.assertIsInstance(routes.distance, int)
+        self.assertEqual(routes.distance, 2439)
         self.assertIsInstance(routes.raw, dict)
 
     @responses.activate
@@ -88,7 +88,7 @@ class ORSTest(_test.TestCase):
         self.assertIsInstance(routes, Direction)
         self.assertIsInstance(routes.geometry, list)
         self.assertIsInstance(routes.duration, int)
-        self.assertIsInstance(routes.distance, int)
+        self.assertEqual(routes.distance, int(850.5))
         self.assertIsInstance(routes.raw, dict)
 
     @responses.activate
@@ -145,10 +145,10 @@ class ORSTest(_test.TestCase):
 
         self.assertEqual(1, len(responses.calls))
         self.assertEqual(expected, json.loads(responses.calls[0].request.body.decode("utf-8")))
-
         self.assertIsInstance(matrix, Matrix)
-        self.assertIsInstance(matrix.durations, list)
+        self.assertEqual(matrix.durations, [[7900.34], [0], [136841.92], [483295.5]])
         self.assertIsInstance(matrix.distances, list)
+        self.assertEqual(matrix.distances, [[125.58], [0], [238.25], [100]])
         self.assertIsInstance(matrix.raw, dict)
 
     @responses.activate
