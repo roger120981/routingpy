@@ -20,13 +20,13 @@
 Using **routingpy** you can easily request **directions**, **isochrones** and
 **matrices** from many reliable online providers in a consistent fashion. Base parameters
 are the same for all services, while still preserving each service's special parameters (for
-more info, please look at our `README`_.
+more info, please look at our `README`_).
 Take a look at our `Examples`_ to see how simple you can compare routes from different providers.
 
-**routingpy** is tested against 3.8, 3.9, 3.10, 3.11 :strike:`and PyPy3` (`#60 <https://github.com/gis-ops/routing-py/issues/60>`_).
+**routingpy** is tested against CPython 3.9, 3.10, 3.11, 3.12 and 3.13 and PyPy3 version 3.9 and 3.10.
 
-.. _`README`: https://github.com/gis-ops/routing-py#api
-.. _`Examples`: https://github.com/gis-ops/routing-py#examples
+.. _`README`: https://github.com/mthh/routingpy#api
+.. _`Examples`: https://github.com/mthh/routingpy#examples
 """
 
 from .routers import *  # noqa: F401
