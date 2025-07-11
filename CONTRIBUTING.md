@@ -43,11 +43,20 @@ When contributing, we expect you to:
 
 ### Setup
 
-1. Create and activate a new virtual environment (optional, but recommended):
+Required: Python 3.9 or higher, `poetry` and `git`.
+
+0. Clone the repository:
+
+```bash
+git clone https://github.com/mthh/routingpy
+cd routingpy
+```
+
+1. Create and activate a new virtual environment:
 
 ```bash
 # From the root of your git project
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 ```
 
@@ -55,8 +64,6 @@ source .venv/bin/activate
 
 ```bash
 # From the root of your git project
-pip install -r requirements_dev.txt
-# or
 poetry install
 ```
 
@@ -71,7 +78,7 @@ pytest -v
 
 ```bash
 # From the root of your git project
-pre-commit install
+poetry run pre-commit install
 ```
 
 ### Tests

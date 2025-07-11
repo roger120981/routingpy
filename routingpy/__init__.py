@@ -33,3 +33,15 @@ from .routers import *  # noqa: F401
 
 # Delete so options is only available over routingpy.routers.options
 del options  # noqa: F821
+
+try:
+    import importlib.metadata
+
+    try:
+        __version__ = importlib.metadata.version("routingpy")
+    except importlib.metadata.PackageNotFoundError:
+        __version__ = None
+except ImportError:
+    # Fallback for Python < 3.8,
+    # even though routingpy requires Python 3.9+
+    __version__ = None
