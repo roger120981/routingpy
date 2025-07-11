@@ -53,7 +53,6 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-version = "1.3.0"
 include = [
     "AUTHORS.md",
     "LICENSE",
@@ -94,8 +93,7 @@ sphinxnotes-strike = "^1.2"
 responses = "^0.10.0"
 coverage = "^7.0.0"
 pre-commit = "^2.7.1"
-pytest = "^7.0.0"
-build = "^0.7.0"
+pytest = "^8.0.0"
 
 [tool.black]
 line-length = 105
