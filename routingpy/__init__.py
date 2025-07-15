@@ -29,11 +29,6 @@ Take a look at our `Examples`_ to see how simple you can compare routes from dif
 .. _`Examples`: https://github.com/mthh/routingpy#examples
 """
 
-from .routers import *  # noqa: F401
-
-# Delete so options is only available over routingpy.routers.options
-del options  # noqa: F821
-
 try:
     import importlib.metadata
 
@@ -45,3 +40,8 @@ except ImportError:
     # Fallback for Python < 3.8,
     # even though routingpy requires Python 3.9+
     __version__ = None
+
+from .routers import *  # noqa: F401
+
+# Delete so options is only available over routingpy.routers.options
+del options  # noqa: F821
