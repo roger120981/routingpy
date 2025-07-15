@@ -118,7 +118,7 @@ class MapboxOSRM:
     ):
         """Get directions between an origin point and a destination point.
 
-        For more information, visit https://docs.mapbox.com/api/navigation/#directions.
+        For more information, visit https://docs.mapbox.com/api/navigation/directions/.
 
         :param locations: The coordinates tuple the route should be calculated
             from in order of visit.
@@ -184,7 +184,7 @@ class MapboxOSRM:
 
         :param language: The language of returned turn-by-turn text instructions. Default is en.
             See the full list here of supported languages here:
-            https://docs.mapbox.com/api/navigation/#instructions-languages
+            https://docs.mapbox.com/api/navigation/directions/#instructions-languages
         :type language: str
 
         :param roundabout_exits: Whether to emit instructions at roundabout exits or not.
@@ -354,7 +354,7 @@ class MapboxOSRM:
     ):
         """Gets isochrones or equidistants for a range of time values around a given set of coordinates.
 
-        For more information, visit https://github.com/valhalla/valhalla/blob/master/docs/api/isochrone/api-reference.md.
+        For more information, visit https://docs.mapbox.com/api/navigation/isochrone/.
 
         :param locations: One pair of lng/lat values. Takes the form [Longitude, Latitude].
         :type locations: list of float
@@ -449,7 +449,7 @@ class MapboxOSRM:
         """
         Gets travel distance and time for a matrix of origins and destinations.
 
-        For more information visit https://docs.mapbox.com/api/navigation/#matrix.
+        For more information visit https://docs.mapbox.com/api/navigation/matrix/.
 
         :param locations: The coordinates tuple the route should be calculated
             from in order of visit.

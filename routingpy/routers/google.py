@@ -195,7 +195,7 @@ class Google:
     ):
         """Get directions between an origin point and a destination point.
 
-        For more information, visit https://developers.google.com/maps/documentation/directions/intro.
+        For more information, visit https://developers.google.com/maps/documentation/directions/overview.
 
         :param locations: The coordinates tuple the route should be calculated
             from in order of visit. Can be a list/tuple of [lon, lat], a list/tuple of address strings, Google's
@@ -223,7 +223,7 @@ class Google:
         :type language: str
 
         :param region: Specifies the region code, specified as a ccTLD ("top-level domain") two-character value.
-            See https://developers.google.com/maps/documentation/directions/intro#RegionBiasing.
+            See https://developers.google.com/maps/documentation/directions/get-directions#RegionBiasing.
         :type region: str
 
         :param units: Specifies the unit system to use when displaying results. One of ['metric', 'imperial'].
@@ -237,7 +237,7 @@ class Google:
             seconds since midnight, January 1, 1970 UTC.
 
         :param traffic_model: Specifies the assumptions to use when calculating time in traffic. One of ['best_guess',
-            'pessimistic', 'optimistic'. See https://developers.google.com/maps/documentation/directions/intro#optional-parameters
+            'pessimistic', 'optimistic'. See https://developers.google.com/maps/documentation/directions/get-directions#optional-parameters
             for details.
         :type traffic_model: str
 
@@ -423,7 +423,7 @@ class Google:
         :type language: str
 
         :param region: Specifies the region code, specified as a ccTLD ("top-level domain") two-character value.
-            See https://developers.google.com/maps/documentation/directions/intro#RegionBiasing.
+            See https://developers.google.com/maps/documentation/directions/get-directions#RegionBiasing.
         :type region: str
 
         :param units: Specifies the unit system to use when displaying results. One of ['metric', 'imperial'].
@@ -438,7 +438,7 @@ class Google:
         :type departure_time: int
 
         :param traffic_model: Specifies the assumptions to use when calculating time in traffic. One of ['best_guess',
-            'pessimistic', 'optimistic'. See https://developers.google.com/maps/documentation/directions/intro#optional-parameters
+            'pessimistic', 'optimistic'. See https://developers.google.com/maps/documentation/directions/get-directions#optional-parameters
             for details.
         :type traffic_model: str
 

@@ -88,7 +88,7 @@ class Valhalla:
         """
         Constructs a waypoint with additional information or constraints.
 
-        Refer to Valhalla's documentation for details: https://github.com/valhalla/valhalla/blob/master/docs/api/turn-by-turn/api-reference.md#locations
+        Refer to Valhalla's documentation for details: https://valhalla.github.io/valhalla/api/turn-by-turn/api-reference/#locations
 
         Use ``kwargs`` to specify options, make sure the value is proper for each option.
 
@@ -127,7 +127,7 @@ class Valhalla:
     ):
         """Get directions between an origin point and a destination point.
 
-        For more information, visit https://github.com/valhalla/valhalla/blob/master/docs/docs/api/turn-by-turn/api-reference.md.
+        For more information, visit https://valhalla.github.io/valhalla/api/turn-by-turn/api-reference/.
 
         Use ``kwargs`` for any missing ``directions`` request options.
 
@@ -146,7 +146,7 @@ class Valhalla:
         :param options: Profiles can have several options that can be adjusted to develop the route path,
             as well as for estimating time along the path. Only specify the actual options dict, the profile
             will be filled automatically. For more information, visit:
-            https://github.com/valhalla/valhalla/blob/master/docs/api/turn-by-turn/api-reference.md#costing-options
+            https://valhalla.github.io/valhalla/api/turn-by-turn/api-reference/#costing-options
 
         :param instructions: Whether to return turn-by-turn instructions. Named for compatibility with other
             providers. Valhalla's parameter here is 'narrative'.
@@ -295,7 +295,7 @@ class Valhalla:
     ):
         """Gets isochrones or equidistants for a range of time values around a given set of coordinates.
 
-        For more information, visit https://github.com/valhalla/valhalla/blob/master/docs/api/isochrone/api-reference.md.
+        For more information, visit https://valhalla.github.io/valhalla/api/isochrone/api-reference/.
 
         Use ``kwargs`` for any missing ``isochrones`` request options.
 
@@ -328,7 +328,7 @@ class Valhalla:
         :param options: Profiles can have several options that can be adjusted to develop the route path,
             as well as for estimating time along the path. Only specify the actual options dict, the profile
             will be filled automatically. For more information, visit:
-            https://github.com/valhalla/valhalla/blob/master/docs/api/turn-by-turn/api-reference.md#costing-options
+            https://valhalla.github.io/valhalla/api/turn-by-turn/api-reference/#costing-options
 
         :param units: Distance units for output. One of ['mi', 'km']. Default km.
 
@@ -341,7 +341,7 @@ class Valhalla:
         :param List[List[List[float]]] avoid_polygons: One or multiple exterior rings of polygons in the form of nested
             JSON arrays, e.g. [[[lon1, lat1], [lon2,lat2]],[[lon1,lat1],[lon2,lat2]]]. Roads intersecting these rings
             will be avoided during path finding. If you only need to avoid a few specific roads, it's much more
-            efficient to use avoid_locations. Valhalla will close open rings (i.e. copy the first coordingate to the
+            efficient to use avoid_locations. Valhalla will close open rings (i.e. copy the first coordinate to the
             last position).
 
         :param date_time: This is the local date and time at the location. Field ``type``: 0: Current departure time,
@@ -503,7 +503,7 @@ class Valhalla:
         """
         Gets travel distance and time for a matrix of origins and destinations.
 
-        For more information, visit https://github.com/valhalla/valhalla/blob/master/docs/docs/api/matrix/api-reference.md.
+        For more information, visit https://valhalla.github.io/valhalla/api/matrix/api-reference/.
 
         Use ``kwargs`` for any missing ``matrix`` request options.
 
@@ -525,7 +525,7 @@ class Valhalla:
         :param options: Profiles can have several options that can be adjusted to develop the route path,
             as well as for estimating time along the path. Only specify the actual options dict, the profile
             will be filled automatically. For more information, visit:
-            https://github.com/valhalla/valhalla/blob/master/docs/api/turn-by-turn/api-reference.md#costing-options
+            https://valhalla.github.io/valhalla/api/turn-by-turn/api-reference/#costing-options
 
         :param avoid_locations: A set of locations to exclude or avoid within a route.
             Specified as a list of coordinates, similar to coordinates object.
@@ -682,7 +682,7 @@ class Valhalla:
         :param options: Profiles can have several options that can be adjusted to develop the route path,
             as well as for estimating time along the path. Only specify the actual options dict, the profile
             will be filled automatically. For more information, visit:
-            https://github.com/valhalla/valhalla/blob/master/docs/api/turn-by-turn/api-reference.md#costing-options
+            https://valhalla.github.io/valhalla/api/turn-by-turn/api-reference/#costing-options
 
         :param date_time: This is the local date and time at the location. Field ``type``: 0: Current departure time,
             1: Specified departure time. Field ``value```: the date and time is specified
@@ -788,7 +788,7 @@ class Valhalla:
             directions. One of ["auto", "bicycle", "multimodal", "pedestrian".
         :param shape_match: It allows some control of the matching algorithm based on the type of input. One of
             ["edge_walk", "map_snap", "walk_or_snap"]. See for full reference:
-            https://github.com/valhalla/valhalla/blob/master/docs/api/map-matching/api-reference.md#shape-matching-parameters
+            https://valhalla.github.io/valhalla/api/map-matching/api-reference/#shape-matching-parameters
         :param encoded_polyline: The encoded polyline string with precision 6.
         :param filters: A list of response object to either include or exclude, depending on the filter_action
             attribute
@@ -796,7 +796,7 @@ class Valhalla:
         :param options: Profiles can have several options that can be adjusted to develop the route path,
             as well as for estimating time along the path. Only specify the actual options dict, the profile
             will be filled automatically. For more information, visit:
-            https://github.com/valhalla/valhalla/blob/master/docs/api/turn-by-turn/api-reference.md#costing-options
+            https://valhalla.github.io/valhalla/api/turn-by-turn/api-reference/#costing-options
         :param dry_run: Print URL and parameters without sending the request.
 
         :raises: ValueError if 'locations' and 'encoded_polyline' was specified

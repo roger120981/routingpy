@@ -131,7 +131,7 @@ class Graphhopper:
 
         Use ``direction_kwargs`` for any missing ``directions`` request options.
 
-        For more information, visit https://docs.graphhopper.com/#operation/postRoute.
+        For more information, visit https://docs.graphhopper.com/openapi/routing/postroute.
 
         :param locations: The coordinates tuple the route should be calculated
             from in order of visit.
@@ -195,7 +195,7 @@ class Graphhopper:
         :type ch_disable: bool
 
         :param custom_model: The custom_model modifies the routing behaviour of the specified profile.
-            See https://docs.graphhopper.com/#section/Custom-Model
+            See https://docs.graphhopper.com/openapi/custom-model
         :type custom_model: dict
 
         :param headings: Optional parameter. Favour a heading direction for a certain point. Specify either one heading for the start point or as
@@ -417,7 +417,7 @@ class Graphhopper:
 
         Use ``isochrones_kwargs`` for missing ``isochrones`` request options.
 
-        For more details visit https://docs.graphhopper.com/#tag/Isochrone-API.
+        For more details visit https://docs.graphhopper.com/openapi/isochrones.
 
         :param locations: One coordinate pair denoting the location.
         :type locations: tuple of float or list of float
@@ -531,7 +531,7 @@ class Graphhopper:
 
         Use ``matrix_kwargs`` for any missing ``matrix`` request options.
 
-        For more details visit https://docs.graphhopper.com/#tag/Matrix-API.
+        For more details visit https://docs.graphhopper.com/openapi/matrices.
 
         :param locations: Specify multiple points for which the weight-, route-, time- or distance-matrix should be calculated.
             In this case the starts are identical to the destinations.
@@ -541,8 +541,8 @@ class Graphhopper:
         :type locations: List[List[float]|Tuple[float]]|Tuple[List[float]|Tuple[float]]
 
         :param profile: Specifies the mode of transport.
-            One of bike, car, foot or
-            https://graphhopper.com/api/1/docs/supported-vehicle-profiles/Default.
+            One of bike, car, foot or other vehicles supported by GraphHopper
+            (see https://docs.graphhopper.com/openapi/map-data-and-routing-profiles).
             Default "car".
         :type profile: str
 
