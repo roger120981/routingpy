@@ -62,7 +62,7 @@ def get_router_by_name(router_name):
     :param router_name: Name of the router as string.
     :type router_name: str
 
-    :rtype: Union[:class:`routingpy.routers.google.Google`, :class:`routingpy.routers.graphhopper.Graphhopper`, :class:`routingpy.routers.heremaps.HereMaps`, :class:`routingpy.routers.mapbox_osrm.MapBoxOSRM`, :class:`routingpy.routers.mapbox_valhalla.MapBoxValhalla`, :class:`routingpy.routers.openrouteservice.ORS`, :class:`routingpy.routers.osrm.OSRM`, :class:`routingpy.routers.otp_v2.OpenTripPlannerV2`, :class:`routingpy.routers.valhalla.Valhalla`]
+    :rtype: Union[:class:`routingpy.routers.google.Google`, :class:`routingpy.routers.graphhopper.Graphhopper`, :class:`routingpy.routers.heremaps.HereMaps`, :class:`routingpy.routers.mapbox_osrm.MapBoxOSRM`, :class:`routingpy.routers.openrouteservice.ORS`, :class:`routingpy.routers.osrm.OSRM`, :class:`routingpy.routers.otp_v2.OpenTripPlannerV2`, :class:`routingpy.routers.valhalla.Valhalla`]
 
     """
     try:

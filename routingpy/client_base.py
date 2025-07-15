@@ -42,12 +42,12 @@ class options(object):
     Example for overriding default values for `user_agent` and proxies:
 
     >>> from routingpy.routers import options
-    >>> from routingpy.routers import MapboxValhalla
+    >>> from routingpy.routers import MapboxOSRM
     >>> options.default_user_agent = 'amazing_routing_app'
     >>> options.default_proxies = {'https': '129.125.12.0'}
-    >>> router = MapboxValhalla(my_key)
+    >>> router = MapboxOSRM(my_key)
     >>> print(router.client.headers)
-    {'User-Agent': 'amazing_routing_app', 'Content-Type': 'application/json'}
+    {'User-Agent': 'amazing_routing_app', 'Content-Type': 'application/x-www-form-urlencoded'}
     >>> print(router.client.proxies)
     {'https': '129.125.12.0'}
 
