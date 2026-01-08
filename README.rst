@@ -42,6 +42,7 @@ or **time-distance matrices**.
 -  `OpenTripPlannerV2`_
 -  `Local Valhalla`_
 -  `Local OSRM`_
+-  `IGN`_
 
 This list is hopefully growing with time and contributions by other developers. An up-to-date list is always available
 in our documentation_.
@@ -309,6 +310,7 @@ All these parameters, and more, can optionally be **globally set** for all route
 .. _OpenTripPlannerV2: https://docs.opentripplanner.org/en/latest/
 .. _Local Valhalla: https://valhalla.github.io/valhalla/
 .. _Local OSRM: https://github.com/Project-OSRM/osrm-backend/wiki
+.. _IGN: https://geoservices.ign.fr/documentation/services/services-geoplateforme/itineraire
 .. _documentation: https://routingpy.readthedocs.io/en/latest
 .. _routing-py.routers: https://routingpy.readthedocs.io/en/latest/#module-routingpy.routers
 .. _Apache 2.0 License: https://github.com/mthh/routingpy/blob/master/LICENSE

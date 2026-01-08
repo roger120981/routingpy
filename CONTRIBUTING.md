@@ -131,5 +131,5 @@ It's really easy:
    To run the new tests and ensure consistency, refer to the [Tests](#tests) section above. **Don't store secrets** in the tests.
 
 4. **Document** Please use docstring documentation for all user-exposed functionality, similar to other router implementations.
-   Also, please register the new module in `docs/indes.rst`'s `Routers` section. To build the docs, refer to the
+   Also, please register the new module in `docs/index.rst`'s `Routers` section. To build the docs, refer to the
    [documentation section](#documentation) for details. Don't forget to add your name to the list of `AUTHORS.md`.

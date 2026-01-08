@@ -983,6 +983,23 @@ ENDPOINTS_RESPONSES = {
             "weights": [[0.0, 272.99, 2331.526], [258.115, 0.0, 2305.121], [2356.307, 2225.083, 0.0]],
         },
     },
+    "ign": {
+        "directions_geojson": {
+            "geometry": {"coordinates": PARAM_LINE},
+            "duration": 100,
+            "distance": 100,
+        },
+        "directions_polyline": {
+            "geometry": "qmbjHspkr@kCmCpE{T~M|@|QcRvC}OjCgD~F~@~I~SjLxqAjT||@lDde@aBhh@uUbuAmJpPod@|c@iWhQoSt_@}Hx]oTfNqNWqQeKilAa]hByx@DiCvDd@dNxJ[zMl[eCfKlBn[rUb]z]pGoGbHtY|j@xw@jKnFfd@~IdhEpyFm@rGpInKyAhDuDuE",
+            "duration": 100,
+            "distance": 100,
+        },
+        "isochrones": {
+            "point": ",".join([str(x) for x in PARAM_POINT]),
+            "costValue": PARAM_INT_BIG,
+            "geometry": {"coordinates": PARAM_POLY},
+        },
+    },
 }
 
 ENDPOINTS_QUERIES = {
@@ -1283,6 +1300,19 @@ ENDPOINTS_QUERIES = {
             "profile": "driving-car",
             "metrics": ["duration", "distance"],
             "resolve_locations": "true",
+        },
+    },
+    "ign": {
+        "directions": {
+            "resource": "bdtopo-osrm",
+            "locations": PARAM_LINE,
+            "profile": "car",
+            "geometry_format": "geojson",
+            "getSteps": True,
+        },
+        "isochrones": {
+            "locations": PARAM_POINT,
+            "intervals": PARAM_INT_BIG,
         },
     },
 }
